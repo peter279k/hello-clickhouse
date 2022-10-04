@@ -17,7 +17,9 @@ public class HelloDB {
                 Connection conn = dataSource.getConnection();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery("show databases");
-                System.out.println(rs);
+                while (rs.next()) {
+                    System.out.println(rs.getString("name"));
+		}
             } catch (SQLException e) {
                  e.printStackTrace();
                  System.out.println("Cannot connect the ClickHouse DB server");
